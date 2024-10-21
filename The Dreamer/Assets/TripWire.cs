@@ -6,10 +6,9 @@ public class TripWire : MonoBehaviour
 {
     private AudioSource audioSource;
 
-    public GameObject[] toyPrefabs;
-    public int numberOfToys = 4;
-    public float explosionRadius = 5.0f;
-    public float explosionForce = 500.0f;
+    public GameObject toyPrefab;
+    public float explosionRadius = 3f;
+    public float explosionForce = 300f;
     public Transform explosionPoint;
 
 
@@ -23,26 +22,27 @@ public class TripWire : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             audioSource.Play();
+            spawnToys();
         }
+        else
+            return;
+    }
 
-        // Create and scatter toys
-            for (int i = 0; i < numberOfToys; i++)
+    void spawnToys()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            // Instantiate the toy at the explosion point
+            GameObject toyInstance = Instantiate(toyPrefab, explosionPoint.position, Random.rotation);
+            
+
+            // Apply explosion force
+            Rigidbody rb = toyInstance.GetComponent<Rigidbody>();
+            if (rb != null)
             {
-                // Randomly select a toy prefab to instantiate
-                GameObject toyPrefab = toyPrefabs[Random.Range(0, toyPrefabs.Length)];
-                
-                // Instantiate the toy at the explosion point
-                GameObject toyInstance = Instantiate(toyPrefab, explosionPoint.position, Random.rotation);
-                
-                // Apply explosion force
-                Rigidbody rb = toyInstance.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    Vector3 explosionDirection = (toyInstance.transform.position - explosionPoint.position).normalized;
-                    rb.AddForce(explosionDirection * explosionForce);
-                }
+                Vector3 explosionDirection = (toyInstance.transform.position - explosionPoint.position).normalized;
+                rb.AddForce(explosionDirection * explosionForce);
             }
-
-            // Destroy the tripwire after it triggers   Destroy(gameObject);
+        }
     }
 }

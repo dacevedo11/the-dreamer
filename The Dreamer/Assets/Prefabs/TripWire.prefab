@@ -104,14 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b54143845deed45a9d081f5fd7aa51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toyPrefabs:
-  - {fileID: 4025235150878579286, guid: d30c77c907e931d459ea32e334a03b11, type: 3}
-  - {fileID: 8562919183323861271, guid: 3bd685204baf49645880604a80d51b5d, type: 3}
-  - {fileID: 2731590662977788775, guid: 3ba5829737f7c1b4f9e50fab411a55a6, type: 3}
-  - {fileID: 9182264365231045432, guid: 54398a042b9efd940ae10753a0c6261f, type: 3}
-  numberOfToys: 4
-  explosionRadius: 10
-  explosionForce: 500
+  toyPrefab: {fileID: 2731590662977788775, guid: 3ba5829737f7c1b4f9e50fab411a55a6, type: 3}
+  explosionRadius: 5
+  explosionForce: 300
   explosionPoint: {fileID: 7389756635850780778}
 --- !u!65 &3772314147251630463
 BoxCollider:
