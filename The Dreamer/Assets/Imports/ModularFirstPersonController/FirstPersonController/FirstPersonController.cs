@@ -161,8 +161,8 @@ public class FirstPersonController : MonoBehaviour
             crosshairObject.sprite = crosshairImage;
             crosshairObject.color = crosshairColor;
         }
-        else
-        {
+       else
+       {
             crosshairObject.gameObject.SetActive(false);
         }
 
